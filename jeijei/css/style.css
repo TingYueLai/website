@@ -221,18 +221,17 @@ p a:hover {
 	width: 70%;*/
 	display:block;
 	margin:auto;
-	width: 100%;
+	width: 50%;
 }
 #body #featured div {
-	left: 0;
-	margin: 0;
-	padding: 0 2%;
+	left: 50%;
+	margin-left: -480px;
+	margin-top: -171px;
+	padding: 0 0 0 470px;
 	position: absolute;
-	top: 10%;
-  	left:30%;
+	top: 50%;
 	text-align: left;
-	width: 80%;
-  	font-size:30%;
+	width: 490px;
 }
 #body #featured div h2 {
 	background: #fff;
