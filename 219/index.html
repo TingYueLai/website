@@ -7,8 +7,54 @@
     <link href="style.css" rel="stylesheet">
     <link rel="stylesheet" href="c.css">
       <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+      
+      
   </head>
   <body >
+
+<body onload='init()'>
+</body>
+
+<script type="text/javascript">
+    function init(){
+         let exampleModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        exampleModal.show();  
+    }
+</script>
+
+    
+<a href="#" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">會員系統</a>
+
+<!-- 跳出視窗內容 -->
+
+<div class="modal fade" id="loginModal">
+<div class="modal-dialog">
+<div class="modal-content">
+<!-- Header -->
+<div class="modal-header">
+<h3>網站公告</h3>
+<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<!-- Body -->
+<div class="modal-body">
+<!-- 登入表單 -->
+<h1>拜託在前面添加科目 <br>ex:數學明收數講</h1>
+
+</div>
+<!-- Footer -->
+<div class="modal-footer">
+ 
+</div>
+
+
+</div>
+</div>
+</div>
+
+
+      
 <div id="container">
 	<h2>219作業填報系統</h2>
 	<p>請輸入做作業名稱<br>還有選擇日期</p>
