@@ -1,0 +1,31 @@
+    .lightblue{
+      color: #1e90ff
+    }
+    .t{
+        background-color: #9932cc;
+        height: 90px;
+        width: fit-content;
+    }
+    h1{
+        color: black;
+        font-size: 70px;
+    }
+    .maintext{
+        color: #00008b;
+    }
+    .main{
+        width: 100%;
+        height: auto;
+        font-size: 40px;
+        background-color: #b0c4de;
+    }
+    .small{
+        width:100%;
+        height: autos;
+        font-size:  30px;
+        background-color: #e6e6fa;
+        border-bottom-style: dashed;;
+    }
+    .text{
+    font-size:50px;
+    }
