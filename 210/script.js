@@ -39,7 +39,7 @@ function send123() {
     },
   });
 };
-sendButton.addEventListener('click', send123);
+sendButton.addEventListener('click', send);
 sendB.addEventListener('click', send123);
 
 
