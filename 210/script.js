@@ -25,9 +25,8 @@ function send() {
   });
 };
 function send123() {
-  alert("你他媽超gay的千睿愛你");
+  alert("已發出");
   let name = 123;
-  //let phone = password.value;
   $.ajax({
     url: "https://script.google.com/macros/s/AKfycbxZ_kCSvV94sHHRGY7W5d0hm0_FiylZc29UH_zBLzf4wtwDZAlBz_LzFbCB8hxL8Qbu/exec",
     data: {
