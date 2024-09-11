@@ -9,7 +9,7 @@ function send() {
   //let phone = password.value;
   $.ajax({
     type: 'POST',
-    url: "https://script.google.com/macros/s/AKfycbxSmKzBESFvb-c428IUGD3QWvxSD1ZDZZ4gMuCxl5eiHHfwdMCm1vjkGjw_XwjSilTb/exec",
+    url: "https://script.google.com/macros/s/AKfycbykoQM6E4P61rXlBsid6nJLtB3rvGAf6lJ2fCoyKZHJumOL8Q_Qu4A0zH36toMHZPY5/exec",
     data: {
         "name": name,
     },
