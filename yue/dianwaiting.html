@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賴威廷好電</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: backgroundChange 20s infinite alternate; /* 背景顏色漸變 */
+        }
+
+        @keyframes backgroundChange {
+            0% {
+                background: linear-gradient(135deg, #2f80ed, #56ccf2);
+            }
+            25% {
+                background: linear-gradient(135deg, #ff7a18, #af002d);
+            }
+            50% {
+                background: linear-gradient(135deg, #ff6600, #ffcc00);
+            }
+            75% {
+                background: linear-gradient(135deg, #00c6ff, #0072ff);
+            }
+            100% {
+                background: linear-gradient(135deg, #ff1a8c, #ff00cc);
+            }
+        }
+
+        .title {
+            font-size: 10vw; /* 大標題佔頁面 90% */
+            font-weight: bold;
+            text-align: center;
+            z-index: 100;
+            animation: zoomIn 3s ease-in-out infinite, colorChange 3s infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes colorChange {
+            0% {
+                color: #ff7a18;
+            }
+            25% {
+                color: #00ff99;
+            }
+            50% {
+                color: #ff1a8c;
+            }
+            75% {
+                color: #00c6ff;
+            }
+            100% {
+                color: #ffcc00;
+            }
+        }
+
+        .pants {
+            width: 100px;
+            height: 100px;
+            background-color: #00f;
+            border-radius: 50%;
+            position: absolute;
+            animation: fly 5s ease-in-out infinite;
+        }
+
+        /* 讓每個褲褲隨機飛來飛去 */
+        @keyframes fly {
+            0% {
+                left: -150px;
+                top: 50%;
+            }
+            25% {
+                left: 20%;
+                top: 10%;
+                transform: rotate(45deg);
+            }
+            50% {
+                left: 50%;
+                top: 80%;
+                transform: rotate(90deg);
+            }
+            75% {
+                left: 80%;
+                top: 10%;
+                transform: rotate(135deg);
+            }
+            100% {
+                left: 100vw;
+                top: 50%;
+            }
+        }
+
+        /* 生成更多褲褲 */
+        .pants:nth-child(odd) {
+            animation-duration: 6s;
+            animation-delay: 0s;
+        }
+
+        .pants:nth-child(even) {
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+        .cloud, .star {
+            position: absolute;
+            animation: moveClouds 20s linear infinite;
+        }
+
+        .cloud {
+            width: 150px;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+
+        .star {
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 1s infinite alternate;
+        }
+
+        @keyframes moveClouds {
+            0% {
+                transform: translateX(-200px);
+            }
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        .cloud:nth-child(odd) {
+            animation-duration: 30s;
+        }
+
+        .cloud:nth-child(even) {
+            animation-duration: 25s;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* 音效與點擊次數 */
+        #message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 2em;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .sound {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 2em;
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">賴威廷好電</div>
+
+    <!-- 生成多個褲褲 -->
+    <div class="pants" style="top: 20%; left: 30%;"></div>
+    <div class="pants" style="top: 40%; left: 60%;"></div>
+    <div class="pants" style="top: 60%; left: 10%;"></div>
+    <div class="pants" style="top: 80%; left: 80%;"></div>
+    <div class="pants" style="top: 30%; left: 80%;"></div>
+
+    <!-- 雲朵 -->
+    <div class="cloud" style="top: 10%; left: 5%;"></div>
+    <div class="cloud" style="top: 30%; left: 70%;"></div>
+    <div class="cloud" style="top: 50%; left: 20%;"></div>
+    <div class="cloud" style="top: 70%; left: 85%;"></div>
+
+    <!-- 星星 (增加更多星星) -->
+    <div class="star" style="top: 5%; left: 10%;"></div>
+    <div class="star" style="top: 15%; left: 50%;"></div>
+    <div class="star" style="top: 25%; left: 80%;"></div>
+    <div class="star" style="top: 45%; left: 20%;"></div>
+    <div class="star" style="top: 55%; left: 60%;"></div>
+    <div class="star" style="top: 75%; left: 90%;"></div>
+    <div class="star" style="top: 10%; left: 70%;"></div>
+    <div class="star" style="top: 35%; left: 15%;"></div>
+    <div class="star" style="top: 60%; left: 50%;"></div>
+    <div class="star" style="top: 80%; left: 25%;"></div>
+
+    <!-- 點擊次數顯示訊息 -->
+    <div id="message">沒錯，賴威廷真的好電！</div>
+
+    <!-- 音效 -->
+    <div class="sound">🔊</div>
+
+    <script>
+        // 計數器
+        let clickCount = 0;
+
+        // 註冊點擊事件
+        document.body.addEventListener("click", () => {
+            clickCount++;
+            if (clickCount >= 5) {
+                document.getElementById("message").style.display = "block";
+                setTimeout(() => {
+                    document.getElementById("message").style.display = "none";
+                }, 3000);
+            }
+        });
+
+        // 音效播放功能
+        const soundButton = document.querySelector(".sound");
+        soundButton.addEventListener("click", () => {
+            const audio = new Audio('https://www.soundjay.com/button/beep-07.wav');
+            audio.play();
+        });
+    </script>
+</body>
+</html>
