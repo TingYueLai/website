@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>威廷 Orz - 程式界傳奇</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a2e; /* 深藍紫色背景 */
+            color: #e0e0e0; /* 淺灰色文字 */
+            line-height: 1.6;
+            overflow-x: hidden; /* 防止水平滾動 */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #16222A 0%, #3A6073 100%); /* 深邃漸層藍 */
+            color: #fff;
+            padding: 3rem 0;
+            text-align: center;
+            border-bottom: 5px solid #00bcd4; /* 青色邊框 */
+            position: relative;
+            overflow: hidden; /* 確保偽元素不溢出 */
+        }
+
+        header::before { /* 星空背景效果 */
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><circle fill="%23fff" cx="100" cy="100" r="1.5"/><circle fill="%23fff" cx="200" cy="300" r="1"/><circle fill="%23fff" cx="350" cy="150" r="1.2"/><circle fill="%23fff" cx="500" cy="400" r="1.8"/><circle fill="%23fff" cx="650" cy="200" r="1"/><circle fill="%23fff" cx="700" cy="500" r="1.3"/><circle fill="%23fff" cx="50" cy="500" r="1.1"/><circle fill="%23fff" cx="250" cy="50" r="1.6"/><circle fill="%23fff" cx="450" cy="250" r="1.4"/><circle fill="%23fff" cx="600" cy="50" r="1.7"/><circle fill="%23fff" cx="750" cy="350" r="1.2"/><circle fill="%23fff" cx="150" cy="450" r="1.5"/><circle fill="%23fff" cx="300" cy="550" r="1"/><circle fill="%23fff" cx="550" cy="100" r="1.3"/><circle fill="%23fff" cx="400" cy="500" r="1.6"/></svg>') 0 0 / 200px 200px;
+            opacity: 0.1;
+            animation: stars 60s linear infinite;
+        }
+
+        @keyframes stars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-200px); }
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        header .orz-text {
+            font-size: 2rem;
+            font-family: 'Courier New', Courier, monospace;
+            color: #00bcd4; /* 青色 */
+            margin-top: 10px;
+            animation: blink-orz 1.5s infinite alternate;
+        }
+
+        @keyframes blink-orz {
+            0% { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+
+        nav {
+            background: #1f2833; /* 深灰藍 */
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav a {
+            color: #00bcd4; /* 青色連結 */
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffffff; /* 白色懸停 */
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #333; /* 深灰色分隔線 */
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #00bcd4; /* 青色標題 */
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section h2::after { /* 標題底線裝飾 */
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: #00bcd4;
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #2a2a3e; /* 稍淺的藍紫色卡片背景 */
+            padding: 1.5rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #00bcd4; /* 青色左邊框 */
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 188, 212, 0.3); /* 青色陰影 */
+        }
+
+        .card h3 {
+            color: #99ddff; /* 淡藍色卡片標題 */
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .card p, .card ul {
+            color: #c0c0c0; /* 稍淺灰色文字 */
+            font-size: 1rem;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2300bcd4" class="bi bi-check-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>') no-repeat left center;
+            padding-left: 25px;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-showcase img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            filter: grayscale(30%) brightness(80%);
+            transition: filter 0.3s ease;
+        }
+
+        .card:hover .project-showcase img {
+            filter: grayscale(0%) brightness(100%);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: #00bcd4; /* 青色技能標籤 */
+            color: #1a1a2e; /* 深藍紫色文字 */
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .testimonial {
+            font-style: italic;
+            padding: 1rem;
+            background: rgba(0, 188, 212, 0.1); /* 淡青色背景 */
+            border-left: 3px solid #00bcd4;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .testimonial footer {
+            text-align: right;
+            font-style: normal;
+            color: #99ddff; /* 淡藍色署名 */
+            font-weight: bold;
+        }
+
+        .orz-animation {
+            text-align: center;
+            font-size: 5rem;
+            font-weight: bold;
+            font-family: 'Arial Black', Gadget, sans-serif;
+            color: #00bcd4;
+            margin-top: 2rem;
+            animation: orz-bounce 1s infinite ease-in-out;
+            text-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #fff;
+        }
+
+        @keyframes orz-bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-5deg); } /* O */
+            50% { transform: translateY(5px) rotate(0deg); }   /* r */
+            75% { transform: translateY(-15px) rotate(5deg); } /* z */
+        }
+
+        footer.main-footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: #16222A; /* 深色頁腳 */
+            color: #888;
+            margin-top: 3rem;
+            border-top: 3px solid #00bcd4;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header .orz-text {
+                font-size: 1.5rem;
+            }
+            .section h2 {
+                font-size: 2rem;
+            }
+            .card {
+                margin-bottom: 1.5rem;
+            }
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+            .orz-animation {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>威廷</h1>
+            <div class="orz-text">O r z</div>
+            <p style="font-size: 1.2rem; color: #f0f0f0;">程式競賽的傳奇 & 專案開發的巨匠</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="#legend">競賽傳奇</a>
+            <a href="#projects">專案神蹟</a>
+            <a href="#skills">神乎其技</a>
+            <a href="#tribute">眾人景仰</a>
+        </div>
+    </nav>
+
+    <section id="legend" class="section">
+        <div class="container">
+            <h2>競賽傳奇</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>演算法的藝術家</h3>
+                    <p>威廷在程式競賽中，不僅僅是解題，更像是在演繹一場演算法的藝術。他總能以最優雅、最高效的方式，洞悉問題核心，化繁為簡。</p>
+                    <ul>
+                        <li>多次斬獲 ICPC 區域賽金牌</li>
+                        <li>Google Code Jam / Facebook Hacker Cup 全球決賽常客</li>
+                        <li>IOI / NOI 金牌得主 (可自行替換或增加)</li>
+                        <li>驚人的解題速度與正確率</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>快狠準的代碼風格</h3>
+                    <p>他的程式碼不僅執行效率驚人，更具有高度可讀性與簡潔性。同行們常言：「看威廷的 Code，本身就是一種學習與享受。」</p>
+                    <div class="testimonial">
+                        <p>"威廷總能在比賽壓力下，迅速寫出 bug-free 且極度優化的程式碼，簡直非人類！"</p>
+                        <footer>- 某不願透露姓名的競賽隊友 Orz</footer>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>無數榮耀加身</h3>
+                    <p>各大程式競賽的頒獎台上，總少不了威廷的身影。他的名字，已成為程式競賽圈內高品質與頂尖實力的代名詞。</p>
+                    <p>（此處可列舉更多具體獎項年份，例如：202X年 ICPC World Finals 銀牌、202Y年 TopCoder Open Algorithm 冠軍等）</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>專案神蹟</h2>
+            <div class="grid-container">
+                <div class="card project-showcase">
+                    <img src="https://via.placeholder.com/400x200/00bcd4/1a1a2e?text=AI驅動智能系統" alt="專案示意圖1">
+                    <h3>AI 驅動的XX智能系統</h3>
+                    <p>由威廷主導開發，整合尖端機器學習模型，為XX領域帶來革命性效率提升。其架構之精妙、效能之卓越，業界嘆為觀止。</p>
+                    <ul>
+                        <li>核心演算法設計與實現</li>
+                        <li>高併發、低延遲系統架構</li>
+                        <li>從零到一完整專案生命週期管理</li>
+                    </ul>
+                </div>
+                <div class="card project-showcase">
+                    <img src="https://via.placeholder.com/400x200/3A6073/e0e0e0?text=大型分散式平台" alt="專案示意圖2">
+                    <h3>大型企業級分散式平台</h3>
+                    <p>面對TB等級數據與百萬級QPS的挑戰，威廷設計並實現了極具擴展性與穩定性的分散式處理平台，成為業界標竿。</p>
+                    <ul>
+                        <li>微服務架構設計</li>
+                        <li>Kubernetes & Docker 容器化部署</li>
+                        <li>資料庫優化與負載平衡</li>
+                    </ul>
+                </div>
+                <div class="card project-showcase">
+                    <img src="https://via.placeholder.com/400x200/1f2833/00bcd4?text=創新開源貢獻" alt="專案示意圖3">
+                    <h3>改變世界的開源貢獻</h3>
+                    <p>威廷不僅在商業專案中成就斐然，更對開源社群有著卓越貢獻。他所發起的/參與核心開發的開源專案「OS-ProjectName」，已被全球數萬開發者使用。</p>
+                    <ul>
+                        <li>專案發起人 / 核心貢獻者</li>
+                        <li>活躍的社群維護與技術佈道</li>
+                        <li>Pull Requests 被頂級專案合併</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>神乎其技</h2>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.1rem;">威廷所掌握的技術棧，廣博且精深，橫跨前後端、演算法、系統架構、人工智慧等多個領域。</p>
+            <div class="card">
+                <h3>技術雷達</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">C++ (競賽殺器)</span>
+                    <span class="skill-tag">Python (AI & Web)</span>
+                    <span class="skill-tag">Java (企業級應用)</span>
+                    <span class="skill-tag">Go (高併發)</span>
+                    <span class="skill-tag">JavaScript / TypeScript</span>
+                    <span class="skill-tag">React / Vue / Angular</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Spring Boot</span>
+                    <span class="skill-tag">Django / Flask</span>
+                    <span class="skill-tag">演算法與資料結構 (神級)</span>
+                    <span class="skill-tag">系統設計</span>
+                    <span class="skill-tag">分散式系統</span>
+                    <span class="skill-tag">資料庫 (SQL & NoSQL)</span>
+                    <span class="skill-tag">雲端運算 (AWS/GCP/Azure)</span>
+                    <span class="skill-tag">Docker & Kubernetes</span>
+                    <span class="skill-tag">機器學習 & 深度學習</span>
+                    <span class="skill-tag">自然語言處理</span>
+                    <span class="skill-tag">區塊鏈</span>
+                    <span class="skill-tag">資訊安全</span>
+                    <span class="skill-tag">Git & CI/CD</span>
+                    <span class="skill-tag">敏捷開發</span>
+                </div>
+                <div class="testimonial" style="margin-top: 2rem;">
+                    <p>"任何新技術，威廷總能在一夜之間精通，然後超越我們所有人。 Orz"</p>
+                    <footer>- 一位不願面對現實的同事</footer>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tribute" class="section">
+        <div class="container">
+            <h2>眾人景仰</h2>
+            <p style="text-align:center; font-size: 1.2rem; margin-bottom: 1rem;">威廷，不僅是一位技術上的巨人，更是許多人心中的燈塔與榜樣。他的存在，激勵著無數後輩在程式的道路上不斷求索、勇攀高峰。</p>
+            <div class="orz-animation">
+                <span>O</span><span>r</span><span>z</span>
+            </div>
+            <p style="text-align:center; font-size: 1.1rem; margin-top: 2rem;">對於威廷大神，我們只想說：</p>
+            <h3 style="text-align:center; font-size: 2.5rem; color: #00bcd4; margin-top: 1rem;">威廷 Orz! 請收下我們的膝蓋！</h3>
+
+            <div class="grid-container" style="margin-top: 3rem;">
+                <div class="card">
+                    <h4>來自學弟的崇拜</h4>
+                    <p>"學長解題的思路太神了，看他打比賽就像看藝術表演！Orz"</p>
+                </div>
+                <div class="card">
+                    <h4>來自同事的敬佩</h4>
+                    <p>"再複雜的系統瓶頸，到了威廷手上總能迎刃而解，不服不行！Orz"</p>
+                </div>
+                <div class="card">
+                    <h4>來自社群的讚嘆</h4>
+                    <p>"感謝威廷大神對開源的無私奉獻，改變了我的開發方式！Orz"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> All Knees Reserved for 威廷 Orz. </p>
+            <p>本網頁由景仰威廷大神粉絲團自動生成</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
